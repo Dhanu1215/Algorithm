@@ -29,7 +29,6 @@ public class PermutationsOfString {
     }
 
     public static void findPermutations(String str) {
-
         // base case
         if (str == null || str.length() == 0) {
             return;
