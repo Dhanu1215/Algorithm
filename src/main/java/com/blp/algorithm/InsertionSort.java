@@ -1,39 +1,40 @@
 package com.blp.algorithm;
 
+/**
+ * Sort string array using insertion sort
+ */
 public class InsertionSort {
 
-    /* function to sort an aay with insertion sort */
-    void insert(int[] arr) {
-        int temp;
+    public static void main(String[] args) {
+        String[] arr = {"Aishu", "Neha", "Dhanu", "Ovi", "Sai pallavi"};
+        String[] sortedArray = sortString(arr, arr.length);
+        print(sortedArray);
+    }
 
-        for (int i = 1; i < arr.length; i++) {
-            temp = arr[i];
-            int j = i - 1;
-            /* Move the elements greater than temp to one position ahead from their current position*/
-            while (j >= 0 && temp <= arr[j]) {
-                arr[j + 1] = arr[j];
-                j = j - 1;
+    /**
+     *  To Sort array call method sortString
+     */
+    public static String[] sortString(String array[], int length) {
+        String temp = "";
+        for (int i = 0; i < length; i++) {
+            for (int j = i + 1; j < length; j++) {
+                if (array[i].compareToIgnoreCase(array[j]) > 0) {
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
             }
-            arr[j + 1] = temp;
+        }
+        return array;
+    }
+
+    /**
+     * Call method print to print sorted array
+     * @param sortedArray
+     */
+    public static void print(String[] sortedArray) {
+        for (int i = 0; i < sortedArray.length; i++) {
+            System.out.print(sortedArray[i] + " ");
         }
     }
-
-    /* function to print the array */
-    void printArr(int[] arr) {
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {92, 50, 5, 20, 11, 22};
-        InsertionSort sort = new InsertionSort();
-        System.out.println("Before sorting array elements are - ");
-        sort.printArr(arr);
-        sort.insert(arr);
-        System.out.println();
-        System.out.println("After sorting array elements are - ");
-        sort.printArr(arr);
-        System.out.println();
-    }
 }
-
